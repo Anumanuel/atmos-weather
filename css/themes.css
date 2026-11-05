@@ -47,11 +47,11 @@
   --line: rgb(255 255 255 / 0.11);
   --line-strong: rgb(255 255 255 / 0.2);
 
-  --panel: color-mix(in oklab, color-mix(in oklab, var(--scene-deep) 78%, #ffffff) 9%, color-mix(in oklab, var(--scene-deep) 82%, #03060d));
+  --panel: color-mix(in oklab, color-mix(in oklab, color-mix(in oklab, var(--scene-deep) 78%, #ffffff) 9%, color-mix(in oklab, var(--scene-deep) 82%, #03060d)) 84%, transparent);
   --panel-strong: color-mix(in oklab, var(--scene-deep) 86%, rgb(0 0 0 / 0.9));
   --panel-hover: rgb(255 255 255 / 0.06);
   --panel-active: rgb(255 255 255 / 0.1);
-  --veil: color-mix(in oklab, var(--scene-deep) 80%, #03060d);
+  --veil: color-mix(in oklab, color-mix(in oklab, var(--scene-deep) 80%, #03060d) 86%, transparent);
   --field: rgb(255 255 255 / 0.1);
   --field-border: rgb(255 255 255 / 0.18);
 
@@ -107,16 +107,16 @@
 
 @supports not (color: color-mix(in oklab, red, blue)) {
   :root {
-    --panel: rgb(17 24 38);
+    --panel: rgb(17 24 38 / 0.84);
     --panel-strong: rgb(9 13 22 / 0.92);
-    --veil: rgb(8 12 22);
+    --veil: rgb(8 12 22 / 0.86);
   }
 }
 
 :root[data-theme="dark"] {
-  --panel: rgb(16 20 29);
+  --panel: rgb(16 20 29 / 0.86);
   --panel-strong: rgb(8 11 18 / 0.94);
-  --veil: rgb(7 9 14);
+  --veil: rgb(7 9 14 / 0.88);
 }
 
 :root[data-theme="light"] {
@@ -127,11 +127,11 @@
   --ink-4: rgb(15 23 36 / 0.32);
   --line: rgb(15 23 36 / 0.1);
   --line-strong: rgb(15 23 36 / 0.18);
-  --panel: rgb(255 255 255);
+  --panel: rgb(255 255 255 / 0.9);
   --panel-strong: rgb(250 251 253 / 0.96);
   --panel-hover: rgb(15 23 36 / 0.045);
   --panel-active: rgb(15 23 36 / 0.08);
-  --veil: rgb(236 241 247);
+  --veil: rgb(236 241 247 / 0.9);
   --shadow-md: 0 18px 44px -26px rgb(15 23 36 / 0.32), 0 2px 6px -2px rgb(15 23 36 / 0.08);
   --field: rgb(15 23 36 / 0.05);
   --field-border: rgb(15 23 36 / 0.14);
