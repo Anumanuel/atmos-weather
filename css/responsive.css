@@ -502,3 +502,9 @@
     display: none;
   }
 }
+
+@media (max-width: 370px) {
+  .topbar__sound {
+    display: none;
+  }
+}

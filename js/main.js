@@ -1,4 +1,5 @@
 import { createWeatherEngine } from './weather-effects/weather-engine.js';
+import { createSoundscape } from './weather-effects/soundscape.js';
 import * as ui from './ui.js';
 import { closeDay, initForecast, renderDaily, renderHourly, setForecastContext } from './forecast.js';
 import { focusSearch, initSearch } from './search.js';
@@ -41,11 +42,12 @@ const state = {
 };
 
 let engine = null;
+const sound = createSoundscape();
 
 const effectiveMotion = () => state.prefs.motion || (prefersReducedMotion() ? 'off' : 'full');
 
 function savePrefs() {
-  store.savePrefs({ unit: state.prefs.unit, wind: state.prefs.wind, theme: state.prefs.theme, motion: state.prefs.motion });
+  store.savePrefs({ unit: state.prefs.unit, wind: state.prefs.wind, theme: state.prefs.theme, motion: state.prefs.motion, sound: state.prefs.sound, volume: state.prefs.volume });
 }
 
 function syncPrefsUI() {
@@ -92,6 +94,45 @@ function updateScene({ instant = false } = {}) {
   if (!cfg && state.weather) cfg = describeScene(state.weather, state.place, now());
   if (!cfg) cfg = introScene();
   engine.setScene(cfg, { instant });
+  sound.setScene(cfg);
+}
+
+async function setSound(on, { announce = true } = {}) {
+  if (on && !sound.supported) {
+    ui.toast('This browser can’t play generated sound', 'warn');
+    on = false;
+  }
+  state.prefs.sound = on;
+  savePrefs();
+  ui.syncSound(on, state.prefs.volume);
+  if (!on) {
+    sound.disable();
+    if (announce) ui.toast('Weather sounds off');
+    return;
+  }
+  sound.setVolume(state.prefs.volume);
+  const running = await sound.enable();
+  if (announce) ui.toast(running ? 'Weather sounds on · they follow the live weather' : 'Tap anywhere to start the sound', running ? 'ok' : 'warn');
+}
+
+function setVolume(value) {
+  state.prefs.volume = value;
+  savePrefs();
+  sound.setVolume(value);
+}
+
+function armSoundOnGesture() {
+  if (!state.prefs.sound || !sound.supported) return;
+  const start = () => {
+    window.removeEventListener('pointerdown', start, true);
+    window.removeEventListener('keydown', start, true);
+    if (state.prefs.sound) {
+      sound.setVolume(state.prefs.volume);
+      sound.enable();
+    }
+  };
+  window.addEventListener('pointerdown', start, true);
+  window.addEventListener('keydown', start, true);
 }
 
 function updateTitle() {
@@ -491,6 +532,7 @@ function clearData() {
   if (!ok) return;
   store.clearAll();
   clearWeatherCache();
+  sound.disable();
   state.prefs = store.getPrefs();
   state.places = { data: new Map(), fetchedAt: 0, key: '', loading: false };
   applyTheme();
@@ -762,10 +804,12 @@ function init() {
 
   engine = createWeatherEngine(document.getElementById('sky'), {
     onFlash: ui.setFlash,
+    onStrike: (strike) => sound.strike(strike),
     onPalette: ui.applyScenePalette,
   });
   engine.setMotion(motion);
   engine.setScene(introScene(), { instant: true });
+  sound.setScene(introScene());
 
   ui.initUI({
     onLocate: () => locate(),
@@ -792,6 +836,9 @@ function init() {
     },
     onClearData: clearData,
     onSettingsOpen: syncPrefsUI,
+    onSound: (on) => setSound(on),
+    onToggleSound: () => setSound(!state.prefs.sound),
+    onVolume: setVolume,
     onBannerDismiss: () => {
       state.dismissedBanner = state.shownBanner;
     },
@@ -828,6 +875,7 @@ function init() {
   ui.renderWelcome({ popular: POPULAR_PLACES, recents: store.getRecents() });
   bindLifecycle();
   bindSkyInteraction();
+  armSoundOnGesture();
   observeLazySections();
   registerServiceWorker();
   startup();

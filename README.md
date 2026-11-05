@@ -42,6 +42,15 @@ Every scene is built from the actual WMO weather code, `is_day`, cloud cover, pr
 
 **Interactions:** click or tap the sky to play with the weather. You might launch a shooting star, call down lightning, splash the rain, burst the snow, scatter the birds, flare the sun or make fireflies glow together. The cursor acts as an umbrella in the rain, parts falling snow and makes nearby stars glint. Hover over the sun or moon to see live sunset time or moon phase details.
 
+### Weather sounds
+Tap the speaker in the header to hear the weather. Every sound is generated live with the Web Audio API, so there are no audio files to download or license.
+- **Rain** gets louder and fuller with the real precipitation intensity, and heavy rain adds a deep roar.
+- **Wind** rises with the real wind speed and surges on gusts.
+- **Thunder** cracks and rumbles after each lightning flash, delayed like a real distant strike. Heavy rain brings occasional far-off rumbles.
+- **Birds** sing on fair days and **crickets** chirp on warm, calm nights.
+
+Sound is off by default and only starts after you turn it on. The setting and volume (in Settings) are remembered, and audio pauses when the tab is hidden.
+
 ### Dashboard
 - **Hero:** city, local time in the location's own time zone, oversized temperature, condition, feels-like, high/low, a calculated "next change" insight and the observation timestamp.
 - **Next 24 hours:** a scrollable strip with a colour-coded temperature curve, precipitation bars, sunrise and sunset markers, and an hour inspector.
@@ -126,6 +135,7 @@ Weather data by Open-Meteo, licensed CC BY 4.0. The attribution is visible in th
 │       ├── stormy.js          Lightning
 │       ├── foggy.js           Fog banks and haze
 │       ├── wind.js            Gusts, grass, trees, air streaks, leaves
+│       ├── soundscape.js      Generated rain, wind, thunder, birds and crickets
 │       └── life.js            Birds, fireflies, aircraft, cloud shadows
 └── assets/
     ├── data/land-mask.json    Compact land bitmask for the globe (19 KB)

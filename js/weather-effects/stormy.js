@@ -55,6 +55,10 @@ export function createLightning(cfg, env, { frequency = 0.75 } = {}) {
     state.bolt = state.sheet ? null : makeBolt(e, targetX);
     state.pulses = state.sheet ? [[0, 0.55]] : [[0, 1], [rand(0.12, 0.2), rand(0.4, 0.65)]];
     state.origin = state.bolt ? state.bolt.origin : [rand(e.w * 0.1, e.w * 0.9), rand(e.h * 0.08, e.h * 0.25)];
+    if (e.onStrike) {
+      const close = !state.sheet && (targetX !== null || Math.random() < 0.45);
+      e.onStrike({ close, power: state.sheet ? rand(0.4, 0.6) : rand(0.75, 1) });
+    }
   };
 
   return [

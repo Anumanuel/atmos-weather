@@ -105,6 +105,9 @@
         <button class="icon-btn topbar__refresh" id="refresh-btn" type="button" aria-label="Refresh weather" title="Refresh weather" disabled>
           <svg class="ic" aria-hidden="true"><use href="#i-refresh"/></svg>
         </button>
+        <button class="icon-btn topbar__sound" id="sound-btn" type="button" aria-pressed="false" aria-label="Turn weather sounds on" title="Weather sounds">
+          <svg class="ic" aria-hidden="true"><use id="sound-icon" href="#i-sound-off"/></svg>
+        </button>
         <button class="icon-btn" id="settings-btn" type="button" aria-label="Display settings" title="Display settings" aria-expanded="false" aria-controls="settings-panel">
           <svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg>
         </button>
@@ -143,6 +146,19 @@
             <label><input type="radio" name="motion" value="full" checked><span>Full</span></label>
           </div>
           <p class="settings__hint" id="motion-hint">Calm uses fewer particles and softer lightning. Still shows a single frame.</p>
+        </div>
+        <div class="settings__group">
+          <p class="settings__label" id="lbl-sound">Weather sounds</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-sound">
+            <label><input type="radio" name="sound" value="off" checked><span>Off</span></label>
+            <label><input type="radio" name="sound" value="on"><span>On</span></label>
+          </div>
+          <label class="range" for="sound-volume">
+            <svg class="ic" aria-hidden="true"><use href="#i-sound-on"/></svg>
+            <span class="visually-hidden">Volume</span>
+            <input type="range" id="sound-volume" min="0" max="100" step="1" value="70">
+          </label>
+          <p class="settings__hint">Rain, wind, thunder, birds and crickets, generated live to match the weather.</p>
         </div>
         <div class="settings__group">
           <label class="settings__label" for="scene-preview">Preview an atmosphere</label>
@@ -563,6 +579,8 @@
     <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.2l1.9 5.4 5.4 1.9-5.4 1.9L12 17.8l-1.9-5.4-5.4-1.9 5.4-1.9Z M18.4 15.6l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8Z" fill="currentColor"/></symbol>
     <symbol id="i-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7h15M9.5 7V4.8h5V7M6.5 7l.9 12.2a1.6 1.6 0 0 0 1.6 1.5h6a1.6 1.6 0 0 0 1.6-1.5L17.5 7"/></g></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.6A7.6 7.6 0 1 1 9.4 4.5a6 6 0 0 0 10.1 10.1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sound-on" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.4h3.4L12 5.6v12.8l-4.6-3.8H4Z" fill="currentColor" fill-opacity=".14"/><path d="M15.4 9.3a3.8 3.8 0 0 1 0 5.4M18 6.8a7.4 7.4 0 0 1 0 10.4"/></g></symbol>
+    <symbol id="i-sound-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.4h3.4L12 5.6v12.8l-4.6-3.8H4Z" fill="currentColor" fill-opacity=".14"/><path d="M15.6 9.6l4.8 4.8M20.4 9.6l-4.8 4.8"/></g></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><ellipse cx="12" cy="12" rx="3.8" ry="8.6"/><path d="M3.6 12h16.8M5.2 7.6h13.6M5.2 16.4h13.6"/></g></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
     <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5.5 12h13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>

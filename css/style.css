@@ -3677,3 +3677,31 @@ ol {
 .trends__legend i.is-dashed {
   background: repeating-linear-gradient(90deg, var(--ink-2) 0 4px, transparent 4px 7px);
 }
+
+.range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: var(--ink-3);
+}
+
+.range .ic {
+  width: 18px;
+  height: 18px;
+}
+
+.range input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--scene-accent);
+  cursor: pointer;
+}
+
+:root[data-theme="light"] .range input {
+  accent-color: var(--focus);
+}
+
+.icon-btn.is-on {
+  color: color-mix(in oklab, var(--scene-accent) 75%, var(--t-ink));
+}

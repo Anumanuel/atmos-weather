@@ -195,7 +195,10 @@ function initSettings() {
     if (input.name === 'theme') handlers.onTheme(input.value);
     if (input.name === 'motion') handlers.onMotion(input.value);
     if (input.id === 'scene-preview') handlers.onPreview(input.value);
+    if (input.name === 'sound') handlers.onSound(input.value === 'on');
   });
+  $('#sound-volume').addEventListener('input', (event) => handlers.onVolume(Number(event.target.value) / 100));
+  $('#sound-btn').addEventListener('click', () => handlers.onToggleSound());
   $('#clear-data').addEventListener('click', () => {
     close(false);
     handlers.onClearData();
@@ -254,6 +257,20 @@ export function syncPrefs(prefs) {
   el.heroUnit.textContent = prefs.unit === 'f' ? '°F' : '°C';
   el.heroUnit.dataset.next = prefs.unit === 'f' ? 'c' : 'f';
   el.heroUnit.setAttribute('aria-label', prefs.unit === 'f' ? 'Switch to Celsius' : 'Switch to Fahrenheit');
+  syncSound(prefs.sound, prefs.volume);
+}
+
+export function syncSound(on, volume) {
+  const button = $('#sound-btn');
+  button.setAttribute('aria-pressed', String(on));
+  button.setAttribute('aria-label', on ? 'Turn weather sounds off' : 'Turn weather sounds on');
+  button.title = on ? 'Weather sounds on' : 'Weather sounds off';
+  button.classList.toggle('is-on', on);
+  $('#sound-icon').setAttribute('href', on ? '#i-sound-on' : '#i-sound-off');
+  const radio = $(`input[name="sound"][value="${on ? 'on' : 'off'}"]`);
+  if (radio) radio.checked = true;
+  const slider = $('#sound-volume');
+  if (typeof volume === 'number' && document.activeElement !== slider) slider.value = String(Math.round(volume * 100));
 }
 
 export function fillPreviewOptions(scenes) {

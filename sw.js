@@ -1,4 +1,4 @@
-const VERSION = 'atmos-v2';
+const VERSION = 'atmos-v3';
 
 const SHELL = [
   './',
@@ -41,6 +41,7 @@ const SHELL = [
   'js/weather-effects/foggy.js',
   'js/weather-effects/wind.js',
   'js/weather-effects/life.js',
+  'js/weather-effects/soundscape.js',
   'assets/icons/favicon.svg',
   'assets/icons/icon-192.png',
   'assets/icons/icon-512.png',

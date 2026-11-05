@@ -65,6 +65,8 @@ export const DEFAULT_PREFS = {
   wind: 'kmh',
   theme: 'auto',
   motion: null,
+  sound: false,
+  volume: 0.7,
 };
 
 export function getPrefs() {
@@ -75,6 +77,8 @@ export function getPrefs() {
     if (['kmh', 'mph', 'ms'].includes(stored.wind)) prefs.wind = stored.wind;
     if (['auto', 'dark', 'light'].includes(stored.theme)) prefs.theme = stored.theme;
     if (['off', 'calm', 'full'].includes(stored.motion)) prefs.motion = stored.motion;
+    if (typeof stored.sound === 'boolean') prefs.sound = stored.sound;
+    if (typeof stored.volume === 'number' && stored.volume >= 0 && stored.volume <= 1) prefs.volume = stored.volume;
   }
   return prefs;
 }

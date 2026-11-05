@@ -13,7 +13,7 @@ const QUALITY = [0.5, 0.75, 1];
 const FADE_SECONDS = 1.4;
 const PIXEL_BUDGET = 4.2e6;
 
-export function createWeatherEngine(canvas, { onFlash, onPalette } = {}) {
+export function createWeatherEngine(canvas, { onFlash, onPalette, onStrike } = {}) {
   const ctx = canvas.getContext('2d', { alpha: false });
   const landscape = createLandscape();
   const env = {
@@ -38,6 +38,7 @@ export function createWeatherEngine(canvas, { onFlash, onPalette } = {}) {
     cfg: null,
     ridgeY: landscape.ridgeY,
     clipRidge: null,
+    onStrike: onStrike || null,
   };
   env.clipRidge = (context, index) => landscape.clip(context, index, env);
 
