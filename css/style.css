@@ -1510,17 +1510,17 @@ ol {
   position: relative;
   display: grid;
   gap: clamp(28px, 4vw, 44px);
-  padding-block: 8px clamp(56px, 8vw, 96px);
+  padding-block: clamp(48px, 6vw, 80px) clamp(56px, 8vw, 96px);
   isolation: isolate;
 }
 
 .dash::before {
   content: "";
   position: absolute;
-  inset: -180px 0 0;
+  inset: -72px 0 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 0, var(--veil) 240px, var(--veil) 100%);
+  background: linear-gradient(180deg, transparent 0, var(--veil) 72px, var(--veil) 100%);
 }
 
 .panel {
