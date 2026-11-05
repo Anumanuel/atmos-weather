@@ -1,0 +1,170 @@
+@property --scene-deep {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0b1220;
+}
+
+@property --scene-mid {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1b2a44;
+}
+
+@property --scene-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffd08a;
+}
+
+@property --scene-top {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0a1230;
+}
+
+:root {
+  color-scheme: dark;
+
+  --scene-deep: #0b1220;
+  --scene-mid: #1b2a44;
+  --scene-accent: #ffd08a;
+  --scene-top: #0a1230;
+  --flash: 0;
+
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+
+  --hero-ink: #ffffff;
+  --hero-ink-2: rgb(255 255 255 / 0.78);
+  --hero-ink-3: rgb(255 255 255 / 0.58);
+
+  --ink: #f4f7fb;
+  --ink-2: rgb(244 247 251 / 0.76);
+  --ink-3: rgb(244 247 251 / 0.56);
+  --ink-4: rgb(244 247 251 / 0.32);
+
+  --line: rgb(255 255 255 / 0.11);
+  --line-strong: rgb(255 255 255 / 0.2);
+
+  --panel: color-mix(in oklab, var(--scene-deep) 60%, transparent);
+  --panel-strong: color-mix(in oklab, var(--scene-deep) 86%, rgb(0 0 0 / 0.9));
+  --panel-hover: rgb(255 255 255 / 0.06);
+  --panel-active: rgb(255 255 255 / 0.1);
+  --veil: color-mix(in oklab, var(--scene-deep) 74%, transparent);
+  --field: rgb(255 255 255 / 0.1);
+  --field-border: rgb(255 255 255 / 0.18);
+
+  --accent: var(--scene-accent);
+  --accent-ink: #1b1306;
+  --focus: #a8cdff;
+  --good: #7fe0a7;
+  --fair: #d8e26a;
+  --warn: #ffc65c;
+  --poor: #ff9566;
+  --bad: #ff6f7d;
+  --severe: #c792ff;
+  --rain: #8cc8ff;
+
+  --wi-sun: #ffc95e;
+  --wi-moon: #e2e9ff;
+  --wi-rain: #8cc8ff;
+  --wi-snow: #e8f4ff;
+  --wi-bolt: #ffd45c;
+  --wi-cloud-fill: rgb(255 255 255 / 0.1);
+
+  --c-temp: #ffd27a;
+  --c-humidity: #6fb6ff;
+  --c-precip: #7dbdff;
+  --c-wind: #7fe0c4;
+  --c-uv: #ffc65c;
+  --c-pressure: #c4b2ff;
+  --c-cloud: #c8d2de;
+  --c-visibility: #a9dcff;
+
+  --radius-xs: 6px;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
+
+  --gutter: clamp(16px, 4.2vw, 40px);
+  --maxw: 1240px;
+  --header-h: 68px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --shadow-lg: 0 30px 80px -40px rgb(0 0 0 / 0.75), 0 8px 24px -12px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 14px 40px -20px rgb(0 0 0 / 0.6);
+  --blur: blur(18px) saturate(1.25);
+
+  transition:
+    --scene-deep 1.6s var(--ease-in-out),
+    --scene-mid 1.6s var(--ease-in-out),
+    --scene-accent 1.6s var(--ease-in-out),
+    --scene-top 1.6s var(--ease-in-out);
+}
+
+@supports not (color: color-mix(in oklab, red, blue)) {
+  :root {
+    --panel: rgb(10 16 28 / 0.58);
+    --panel-strong: rgb(9 13 22 / 0.92);
+    --veil: rgb(8 12 22 / 0.72);
+  }
+}
+
+:root[data-theme="dark"] {
+  --panel: rgb(8 11 18 / 0.76);
+  --panel-strong: rgb(8 11 18 / 0.94);
+  --veil: rgb(6 9 15 / 0.84);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #0f1724;
+  --ink-2: rgb(15 23 36 / 0.74);
+  --ink-3: rgb(15 23 36 / 0.56);
+  --ink-4: rgb(15 23 36 / 0.32);
+  --line: rgb(15 23 36 / 0.1);
+  --line-strong: rgb(15 23 36 / 0.18);
+  --panel: rgb(255 255 255 / 0.76);
+  --panel-strong: rgb(250 251 253 / 0.96);
+  --panel-hover: rgb(15 23 36 / 0.045);
+  --panel-active: rgb(15 23 36 / 0.08);
+  --veil: rgb(236 241 247 / 0.86);
+  --field: rgb(15 23 36 / 0.05);
+  --field-border: rgb(15 23 36 / 0.14);
+  --focus: #1f6feb;
+  --good: #11875a;
+  --fair: #7c8a10;
+  --warn: #b26b00;
+  --poor: #c24f12;
+  --bad: #c21f3a;
+  --severe: #7a3fd1;
+  --rain: #1f6fc4;
+  --wi-sun: #f0a020;
+  --wi-moon: #5a6ea8;
+  --wi-rain: #2f7fd6;
+  --wi-snow: #6f9ccc;
+  --wi-bolt: #e8a400;
+  --wi-cloud-fill: rgb(15 23 36 / 0.05);
+  --c-temp: #c77d00;
+  --c-humidity: #1f6fc4;
+  --c-precip: #2f7fd6;
+  --c-wind: #0f8a6c;
+  --c-uv: #b26b00;
+  --c-pressure: #6b4fd1;
+  --c-cloud: #5a6878;
+  --c-visibility: #2a6f9e;
+}
+
+:root[data-theme="light"] .hero,
+:root[data-theme="light"] .welcome,
+:root[data-theme="light"] .state-view {
+  --wi-sun: #ffc95e;
+  --wi-moon: #e2e9ff;
+  --wi-rain: #8cc8ff;
+  --wi-snow: #e8f4ff;
+  --wi-bolt: #ffd45c;
+  --wi-cloud-fill: rgb(255 255 255 / 0.1);
+}

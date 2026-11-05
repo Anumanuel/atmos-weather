@@ -1,0 +1,504 @@
+@media (min-width: 1680px) {
+  :root {
+    --maxw: 1340px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .day {
+    grid-template-columns: minmax(5.6rem, 6.6rem) 30px minmax(0, 1fr) 3.4rem 2.4rem minmax(4rem, 7rem) 2.4rem;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 960px) {
+  .split,
+  .split--even {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sun__figure {
+    max-width: 520px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero__now {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .hero__summary {
+    border-left: 0;
+    padding: 18px 0 0;
+    border-top: 1px solid rgb(255 255 255 / 0.22);
+    max-width: 36rem;
+  }
+
+  .hero__temp {
+    font-size: clamp(7.5rem, 30vw, 13rem);
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --header-h: 62px;
+  }
+
+  .brand__name {
+    display: none;
+  }
+
+  .hourly__nav {
+    display: none;
+  }
+
+  .hour-item {
+    --w: 66px;
+  }
+
+  .sk-hour {
+    width: 66px;
+  }
+
+  .hour-detail__card {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hour-detail__head {
+    grid-column: 1 / -1;
+    box-shadow: 0 1px 0 var(--line);
+  }
+
+  .hour-detail__cell {
+    box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line);
+  }
+
+  .dd__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__credit {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .day {
+    grid-template-columns: minmax(4.4rem, 1fr) 28px 3rem 2.3rem minmax(3.2rem, 1.4fr) 2.3rem;
+    gap: 8px;
+    padding: 12px 8px;
+  }
+
+  .week__list {
+    margin: 0 -8px;
+  }
+
+  .day__cond {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .day__name {
+    font-size: 0.95rem;
+  }
+
+  .block__meta {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+
+  .tile {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .tile__body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tile--wide .tile__body {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .tile__viz {
+    margin-left: 0;
+  }
+
+  .tile__value {
+    font-size: 2.2rem;
+  }
+
+  .vbar {
+    width: 100%;
+    height: 8px;
+  }
+
+  .vbar span {
+    inset: 0 auto 0 0;
+    height: auto;
+    width: var(--v, 0%);
+    background: linear-gradient(90deg, #4c9cf0, #a7dcff);
+    transition: width 1s var(--ease-out);
+  }
+
+  .ring {
+    width: 64px;
+    height: 64px;
+  }
+
+  .gauge {
+    width: 100px;
+    height: 60px;
+  }
+
+  .compass {
+    width: 116px;
+    height: 116px;
+  }
+
+  .sk-tile {
+    min-height: 160px;
+  }
+
+  .day-dialog {
+    width: 100vw;
+    margin: auto 0 0;
+    max-width: 100vw;
+  }
+
+  .day-dialog[open] {
+    animation: sheet-in 0.4s var(--ease-out);
+  }
+
+  .day-dialog__surface {
+    border-radius: 26px 26px 0 0;
+    max-height: 92vh;
+    max-height: 92dvh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .dd__head {
+    padding-right: 0;
+    padding-top: 48px;
+  }
+
+  .aqi__pollutants {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .banner {
+    border-radius: 18px;
+    width: calc(100vw - 2 * var(--gutter));
+    font-size: 0.82rem;
+  }
+
+  .welcome__actions {
+    width: 100%;
+  }
+
+  .welcome__actions .btn {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar__units,
+  .topbar__refresh,
+  .search__kbd {
+    display: none;
+  }
+
+  .topbar__inner {
+    gap: 6px;
+  }
+
+  .brand {
+    margin-right: 4px;
+  }
+
+  .search {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .search__panel {
+    position: fixed;
+    top: calc(var(--header-h) + 4px);
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+    max-height: calc(100dvh - var(--header-h) - 24px);
+  }
+
+  .topbar.is-searching .brand,
+  .topbar.is-searching .topbar__actions {
+    display: none;
+  }
+
+  .topbar.is-searching .search-cancel {
+    display: block;
+  }
+
+  .icon-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .settings {
+    position: fixed;
+    top: calc(var(--header-h) + 4px);
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+  }
+
+  .hero__facts {
+    gap: 8px 22px;
+  }
+
+  .hero__desc {
+    font-size: 0.95rem;
+  }
+
+  .hero__cue {
+    display: none;
+  }
+
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .places__list {
+    grid-auto-columns: minmax(136px, 46%);
+  }
+
+  .window__remove {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .trends__stat {
+    padding: 10px;
+  }
+
+  .trends__stat strong {
+    font-size: 1.3rem;
+  }
+
+  .trends__tab {
+    padding: 8px 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand__mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .search__input {
+    padding-right: 34px;
+    padding-left: 36px;
+    font-size: 0.9rem;
+  }
+
+  .search__icon {
+    left: 12px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero__city {
+    font-size: 2.1rem;
+  }
+
+  .hero__temp {
+    font-size: 7rem;
+  }
+
+  .hero__unit {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .hero__condition {
+    font-size: 1.6rem;
+  }
+
+  .hero__facts dd {
+    font-size: 1.05rem;
+  }
+
+  .tile {
+    padding: 14px 12px;
+  }
+
+  .tile__value {
+    font-size: 2rem;
+  }
+
+  .tile--wide .tile__body {
+    gap: 10px;
+  }
+
+  .compass {
+    width: 100px;
+    height: 100px;
+  }
+
+  .day {
+    grid-template-columns: minmax(3.9rem, 1fr) 26px 2.8rem 2.1rem minmax(2.4rem, 1fr) 2.1rem;
+    gap: 6px;
+  }
+
+  .day__pop .ic {
+    display: none;
+  }
+
+  .wi.day__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .hour-detail__card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dd__stats {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .welcome__title {
+    font-size: 2.85rem;
+  }
+
+  .seg span {
+    padding: 6px 10px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .hero,
+  .welcome {
+    min-height: auto;
+  }
+
+  .hero__inner {
+    grid-template-rows: auto 32px auto auto;
+  }
+
+  .hero__temp {
+    font-size: clamp(5.5rem, 14vw, 8rem);
+  }
+
+  .hero__now {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .hero__summary {
+    border-top: 0;
+    border-left: 1px solid rgb(255 255 255 / 0.24);
+    padding: 0 0 4px 20px;
+  }
+
+  .hero__cue {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .window__remove {
+    opacity: 1;
+  }
+
+  .hourly__nav {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .panel,
+  .search,
+  .banner,
+  .toast,
+  .settings,
+  .day-dialog__surface {
+    border: 1px solid CanvasText;
+  }
+
+  .hour[aria-pressed="true"],
+  .seg input:checked + span {
+    outline: 2px solid Highlight;
+  }
+}
+
+@media (max-width: 1100px) {
+  .globe__legend {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .globe__chips {
+    top: calc(132px + env(safe-area-inset-top));
+    bottom: auto;
+    right: clamp(16px, 3vw, 32px);
+    max-width: none;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .globe__chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .globe__chips li {
+    flex: none;
+  }
+
+  .globe__controls {
+    top: auto;
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    transform: none;
+  }
+
+  .globe__card {
+    left: 16px;
+    right: 16px;
+    width: auto;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+
+  .globe__card:not([hidden]) ~ .globe__controls,
+  .globe__controls:has(~ .globe__card:not([hidden])) {
+    bottom: calc(250px + env(safe-area-inset-bottom));
+  }
+
+  .globe__hint {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar__globe {
+    display: none;
+  }
+}
